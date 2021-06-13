@@ -35,9 +35,10 @@ public class Solver {
     public Solver(List<Constraint> constraintsRelationSignList, Function function,
                   List<Variable> variableList) {
 
-        variableNumber = variablesList.size();
+        variableNumber = variableList.size();
         constraintNumber = constraintsRelationSignList.size();
 
+        // x1 = (0, 3000, W1), x2 = (0, 4000, W2)
         for(Variable var : variableList){
             this.variablesList.add(solver.makeNumVar(var.getLowerBound(),var.getUpperBound(),var.getName()));
         }
@@ -47,6 +48,7 @@ public class Solver {
 //        }
 
         int j=0;
+        // mamy trzy elementy klasy Constraint,
         for(Constraint constraint1 : constraintsRelationSignList){
             int i=0;
             if(constraint1.getRelationSign().equals("=")){
@@ -57,6 +59,7 @@ public class Solver {
                 this.constraintsList.add(solver.makeConstraint(constraint1.getLowerBound(),constraint1.getUpperBound(),constraint1.getName()));
             }
 
+            //
             for(double d : constraint1.getParameters()){
                 this.constraintsList.get(j).setCoefficient(this.variablesList.get(i), d);
                 i++;
