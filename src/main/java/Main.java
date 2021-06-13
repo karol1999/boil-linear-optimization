@@ -11,15 +11,15 @@ public class Main {
         List<Constraint> constraintList = new ArrayList<Constraint>();
         Function function = new Function();
 
-        double lowerBound; // variables
-        double upperBound; // variables
-        String name; // variables
+        double lowerBound;
+        double upperBound;
+        String name;
         Scanner scanner = new Scanner(System.in);
 
         // -------------------------------------------------------------------------------------------- //
 
         // variables
-        while(scanner.nextBoolean()){
+        while (scanner.nextBoolean()) {
             System.out.print("Wpisz dolne ograniczenie: ");
             lowerBound = scanner.nextDouble();
             System.out.print("Wpisz gorne ograniczenie: ");
@@ -44,16 +44,12 @@ public class Main {
 
         // constraints
         int counter = 0; // potrzebne do konstruktora Constraint
-        while(scanner.nextBoolean()){
-            // najpierw ograniczenia
-            // nazwa ogarniczenia
-            // relacja
-            // prawa strona?
+        while (scanner.nextBoolean()) {
 
             // musimy wiedzieć ile W mamy, tutaj będzie przypisanie wartosci do W
             List<Double> list = new ArrayList<>();
             lists.add(list);
-            for(int i = 0; i<variableList.size(); i++){
+            for (int i = 0; i < variableList.size(); i++) {
                 System.out.print("Wpisz wartosc ograniczenia: ");
                 constraintValue = scanner.nextDouble(); // wspolczynnik przy kolejnych ogranicznikach
                 list.add(constraintValue);
@@ -80,9 +76,9 @@ public class Main {
         // -------------------------------------------------------------------------------------------- //
 
         // functions
-        while(scanner.nextBoolean()){
+        while (scanner.nextBoolean()) {
 
-            for(int i=0;i<variableList.size();i++){
+            for (int i = 0; i < variableList.size(); i++) {
                 System.out.print("Wpisz wartosc wspolczynnika: ");
                 coefficient = scanner.nextDouble();
                 coefficientList.add(coefficient);
@@ -157,7 +153,7 @@ public class Main {
 
         Solver solver = new Solver(constraintList, function, variableList);
         solver.max();
-        System.out.println(solver.variableToString());
-        System.out.println(solver.functionToString());
+        System.out.println(solver.products());
+        System.out.println(solver.objectiveFunctionValue());
     }
 }

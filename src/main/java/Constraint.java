@@ -1,23 +1,14 @@
-// =, <=, >=
-
-import com.google.ortools.Loader;
-import com.google.ortools.linearsolver.MPConstraint;
-import com.google.ortools.linearsolver.MPObjective;
-import com.google.ortools.linearsolver.MPSolver;
-import com.google.ortools.linearsolver.MPVariable;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Constraint {
 
     private String relationSign;
-    private double upperBound; // right side
+    private double upperBound;
     private String name;
     private List<Double> parameters;
 
-    Constraint() {}
+    Constraint() {
+    }
 
     Constraint(String relationSign, double upperBound, String name, List<Double> parameters) {
         this.relationSign = relationSign;
