@@ -14,7 +14,7 @@ public class Solver {
 
     // zmienna, która będzie przechowywać znak (równość, mniejszość itd)
     // TODO: jakieś funkcjonalności w przyszłości dodać bo jak nie to wytarczy zwykłą zmienną zadeklarować nie klase
-    Constraint constraint;
+    // Constraint constraint;
 
     MPSolver solver = MPSolver.createSolver("GLOP"); // declare the solver (GLOP in the backend)
     // MPSolver is a wrapper for the OR-Tools linear solver, GLOP, as well as several mixed integer programming solvers
@@ -57,16 +57,16 @@ public class Solver {
                 this.constraintsList.add(solver.makeConstraint(constraint1.getLowerBound(),constraint1.getUpperBound(),constraint1.getName()));
             }
 
-            for(double var : constraint1.getParameters()){
-                this.constraintsList.get(j).setCoefficient(this.variablesList.get(i), var);
+            for(double d : constraint1.getParameters()){
+                this.constraintsList.get(j).setCoefficient(this.variablesList.get(i), d);
                 i++;
             }
             j++;
         }
 
         int i=0;
-        for(MPVariable var : this.variablesList){
-            this.objectiveFunction.setCoefficient(var, function.getCoefficientList().get(i));
+        for(MPVariable v : this.variablesList){
+            this.objectiveFunction.setCoefficient(v, function.getCoefficientList().get(i));
             i++;
         }
     }
